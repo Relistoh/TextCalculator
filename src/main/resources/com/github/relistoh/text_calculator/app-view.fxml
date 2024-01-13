@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<Pane prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/17.0.2-ea"
+      xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.github.relistoh.text_calculator.UIController">
+   <ChoiceBox fx:id="choiceBoxInput1" layoutX="50.0" layoutY="145.0" prefHeight="26.0" prefWidth="300.0"/>
+   <ChoiceBox fx:id="choiceBoxInput2" layoutX="50.0" layoutY="225.0" prefHeight="26.0" prefWidth="300.0"/>
+   <ChoiceBox fx:id="choiceBoxOutput1" layoutX="450.0" layoutY="145.0" prefHeight="26.0" prefWidth="300.0"/>
+   <ChoiceBox fx:id="choiceBoxOutput2" layoutX="450.0" layoutY="225.0" prefHeight="26.0" prefWidth="300.0"/>
+   <TextArea layoutX="50.0" layoutY="320.0" prefHeight="200.0" prefWidth="300.0"/>
+   <TextArea layoutX="450.0" layoutY="320.0" prefHeight="200.0" prefWidth="300.0"/>
+   <Button layoutX="50.0" layoutY="540.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="300.0"
+           text="Show output preview"/>
+   <Button layoutX="450.0" layoutY="540.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="300.0"
+           text="Save output to file"/>
+   <Label layoutX="50.0" layoutY="38.0" prefHeight="17.0" prefWidth="300.0" text="Enter input file name:"/>
+   <TextField layoutX="50.0" layoutY="64.0" prefHeight="26.0" prefWidth="300.0" promptText="Enter text here"/>
+   <Label layoutX="50.0" layoutY="119.0" prefHeight="17.0" prefWidth="300.0" text="Choose file type:"/>
+   <Label layoutX="50.0" layoutY="196.0" prefHeight="17.0" prefWidth="300.0"
+          text="Choose if file is encrypted or archived:"/>
+   <TextField layoutX="450.0" layoutY="64.0" prefHeight="26.0" prefWidth="300.0" promptText="Enter text here"/>
+   <Label layoutX="450.0" layoutY="38.0" prefHeight="17.0" prefWidth="300.0" text="Enter output file name:"/>
+   <Label layoutX="450.0" layoutY="119.0" prefHeight="17.0" prefWidth="300.0" text="Choose file type:"/>
+   <Label layoutX="450.0" layoutY="196.0" prefHeight="17.0" prefWidth="300.0"
+          text="Choose if file is encrypted or archived:"/>
+   <Label layoutX="50.0" layoutY="283.0" prefHeight="17.0" prefWidth="300.0" text="Input file preview:"/>
+   <Label layoutX="450.0" layoutY="283.0" prefHeight="17.0" prefWidth="300.0" text="Output file preview:"/>
+</Pane>
