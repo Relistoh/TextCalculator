@@ -29,7 +29,7 @@ public class UIController {
     private TextField textFieldInput;
 
     @FXML
-    private TextArea textAreaInput;
+    private TextArea textAreaInput, textAreaOutput;
 
     @FXML
     private void initialize()
@@ -51,6 +51,8 @@ public class UIController {
 
         switchManager.inputSwitch(inputFileInfo);
         textAreaInput.setText(switchManager.data);
+        textAreaOutput.setText(switchManager.calculatedData);
+
 
         System.out.println(inputFileInfo.toString());
     }

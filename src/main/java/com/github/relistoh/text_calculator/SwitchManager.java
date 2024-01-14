@@ -2,6 +2,7 @@ package com.github.relistoh.text_calculator;
 
 public class SwitchManager {
     private TextFile textFile;
+    public String calculatedData;
     public String data;
 
     public SwitchManager() {
@@ -14,6 +15,7 @@ public class SwitchManager {
                     case "nothing" -> {
                         textFile = new PlainTextManager();
                         data = textFile.readData(inputFileInfo.fileName);
+                        calculatedData = ExpressionFinder.evaluateMathExpressions(data);
                     }
                 }
             }
