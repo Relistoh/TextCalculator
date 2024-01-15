@@ -3,6 +3,7 @@ module com.github.relistoh.text_calculator {
     requires javafx.fxml;
     requires com.fasterxml.jackson.core;
     requires com.fasterxml.jackson.databind;
+    requires com.fasterxml.jackson.dataformat.xml;
 
 
     opens com.github.relistoh.text_calculator to javafx.fxml;

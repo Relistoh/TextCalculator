@@ -19,6 +19,13 @@ public class SwitchManager {
                         data = textFile.readData(inputFileInfo.fileName);
                         calculatedData = ExpressionFinder.evaluateMathExpressions(data);
                     }
+                    case "archived" -> {
+                        textFile = new PlainTextManager();
+                        TextFile archFile = new ArchiveManager(textFile);
+                        ((ArchiveManager) archFile).unzip(inputFileInfo.fileName + ".txt.zip", "/Users/anton/IdeaProjects/TextCalculator");
+                        data = textFile.readData(inputFileInfo.fileName);
+                        calculatedData = ExpressionFinder.evaluateMathExpressions(data);
+                    }
                 }
             }
             case "json" -> {
@@ -27,6 +34,15 @@ public class SwitchManager {
                         textFile = new JsonManager();
                         data = textFile.readData(inputFileInfo.fileName);
                         calculatedData = ((JsonManager) textFile).processedData(data);
+                    }
+                }
+            }
+            case "xml" -> {
+                switch (inputFileInfo.fileType) {
+                    case "nothing" -> {
+                        textFile = new XmlManager();
+                        data = textFile.readData(inputFileInfo.fileName);
+                        calculatedData = ((XmlManager) textFile).processedData(data);
                     }
                 }
             }
