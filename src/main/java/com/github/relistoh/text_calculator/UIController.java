@@ -6,6 +6,8 @@ import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 
+import java.io.IOException;
+
 public class UIController {
     InputFileInfo inputFileInfo = new InputFileInfo();
     SwitchManager switchManager = new SwitchManager();
@@ -43,8 +45,7 @@ public class UIController {
     }
 
     @FXML
-    public void showOutputAction()
-    {
+    public void showOutputAction() throws IOException {
         inputFileInfo.fileName = textFieldInput.getText();
         inputFileInfo.fileExtencion = choiceBoxInput1.getValue();
         inputFileInfo.fileType = choiceBoxInput2.getValue();
