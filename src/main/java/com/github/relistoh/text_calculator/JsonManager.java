@@ -15,7 +15,6 @@ public class JsonManager implements TextFile {
         ObjectMapper objectMapper = new ObjectMapper();
         objectMapper.enable(SerializationFeature.INDENT_OUTPUT);
 
-        // Просто читаем данные из файла и возвращаем их как строку
         return objectMapper.writeValueAsString(
                 objectMapper.readValue(new File(fileName + ".json"), new TypeReference<List<Message>>() {})
         );
@@ -25,14 +24,12 @@ public class JsonManager implements TextFile {
         ObjectMapper objectMapper = new ObjectMapper();
         objectMapper.enable(SerializationFeature.INDENT_OUTPUT);
 
-        // Прямо десериализуем строку в список и обрабатываем его
         List<Message> dialog = objectMapper.readValue(data, new TypeReference<List<Message>>() {});
 
         for (Message message : dialog) {
             message.senderMessage = ExpressionFinder.evaluateMathExpressions(message.senderMessage);
         }
 
-        // Возвращаем обработанный список как JSON-строку
         return objectMapper.writeValueAsString(dialog);
     }
 
