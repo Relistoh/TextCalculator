@@ -1,16 +1,16 @@
-package com.github.relistoh.text_calculator;
+package com.github.relistoh.text_calculator.additional_classes;
 
-public class OutputFileInfo {
+public class InputFileInfo {
     public String fileName;
     public String fileExtencion;
     public String fileType;
 
-    public OutputFileInfo() {
+    public InputFileInfo() {
     }
 
     @Override
     public String toString() {
-        return "OutputFileInfo{" +
+        return "InputFileInfo{" +
                 "fileName='" + fileName + '\'' +
                 ", fileExtencion='" + fileExtencion + '\'' +
                 ", fileType='" + fileType + '\'' +

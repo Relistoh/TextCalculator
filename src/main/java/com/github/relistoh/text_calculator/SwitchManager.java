@@ -1,5 +1,15 @@
 package com.github.relistoh.text_calculator;
 
+import com.github.relistoh.text_calculator.additional_classes.InputFileInfo;
+import com.github.relistoh.text_calculator.additional_classes.OutputFileInfo;
+import com.github.relistoh.text_calculator.archivation_encryption.ArchivationManager;
+import com.github.relistoh.text_calculator.archivation_encryption.EncryptionManager;
+import com.github.relistoh.text_calculator.expression.ExpressionFinder;
+import com.github.relistoh.text_calculator.reader_writer.JsonManager;
+import com.github.relistoh.text_calculator.reader_writer.PlainTextManager;
+import com.github.relistoh.text_calculator.reader_writer.TextFile;
+import com.github.relistoh.text_calculator.reader_writer.XmlManager;
+
 public class SwitchManager {
     private TextFile textFile;
     public String calculatedData;
@@ -19,33 +29,27 @@ public class SwitchManager {
                     }
                     case "archived" -> {
                         textFile = new PlainTextManager();
-                        TextFile archFile = new ArchiveManager(textFile);
-                        ((ArchiveManager) archFile).unzip(inputFileInfo.fileName + ".txt.zip", "/Users/anton/IdeaProjects/TextCalculator");
+                        ArchivationManager.unzip(inputFileInfo.fileName + ".txt.zip", "/Users/anton/IdeaProjects/TextCalculator");
                         data = textFile.readData(inputFileInfo.fileName);
                         calculatedData = ExpressionFinder.evaluateMathExpressions(data);
                     }
                     case "encrypted" -> {
                         textFile = new PlainTextManager();
-                        TextFile encFile = new EncryptionManager(textFile);
-                        ((EncryptionManager) encFile).decryptFile(inputFileInfo.fileName + ".enc", inputFileInfo.fileName + ".txt");
+                        EncryptionManager.decryptFile(inputFileInfo.fileName + ".enc", inputFileInfo.fileName + ".txt");
                         data = textFile.readData(inputFileInfo.fileName);
                         calculatedData = ExpressionFinder.evaluateMathExpressions(data);
                     }
                     case "archived, then encrypted" -> {
                         textFile = new PlainTextManager();
-                        TextFile encFile = new EncryptionManager(textFile);
-                        ((EncryptionManager) encFile).decryptFile(inputFileInfo.fileName + ".enc", inputFileInfo.fileName + ".txt.zip");
-                        TextFile archFile = new ArchiveManager(textFile);
-                        ((ArchiveManager) archFile).unzip(inputFileInfo.fileName + ".txt.zip", "/Users/anton/IdeaProjects/TextCalculator");
+                        EncryptionManager.decryptFile(inputFileInfo.fileName + ".enc", inputFileInfo.fileName + ".txt.zip");
+                        ArchivationManager.unzip(inputFileInfo.fileName + ".txt.zip", "/Users/anton/IdeaProjects/TextCalculator");
                         data = textFile.readData(inputFileInfo.fileName);
                         calculatedData = ExpressionFinder.evaluateMathExpressions(data);
                     }
                     case "encrypted, then archived" -> {
                         textFile = new PlainTextManager();
-                        TextFile archFile = new ArchiveManager(textFile);
-                        ((ArchiveManager) archFile).unzip(inputFileInfo.fileName + ".enc.zip", "/Users/anton/IdeaProjects/TextCalculator");
-                        TextFile encFile = new EncryptionManager(textFile);
-                        ((EncryptionManager) encFile).decryptFile(inputFileInfo.fileName + ".enc", inputFileInfo.fileName + ".txt");
+                        ArchivationManager.unzip(inputFileInfo.fileName + ".enc.zip", "/Users/anton/IdeaProjects/TextCalculator");
+                        EncryptionManager.decryptFile(inputFileInfo.fileName + ".enc", inputFileInfo.fileName + ".txt");
                         data = textFile.readData(inputFileInfo.fileName);
                         calculatedData = ExpressionFinder.evaluateMathExpressions(data);
                     }
@@ -60,7 +64,7 @@ public class SwitchManager {
                     }
                     case "archived" -> {
                         textFile = new JsonManager();
-                        ArchiveManager.unzip(inputFileInfo.fileName + ".json.zip", "/Users/anton/IdeaProjects/TextCalculator");
+                        ArchivationManager.unzip(inputFileInfo.fileName + ".json.zip", "/Users/anton/IdeaProjects/TextCalculator");
                         data = textFile.readData(inputFileInfo.fileName);
                         calculatedData = ((JsonManager) textFile).processedData(data);
                     }
@@ -73,13 +77,13 @@ public class SwitchManager {
                     case "archived, then encrypted" -> {
                         textFile = new JsonManager();
                         EncryptionManager.decryptFile(inputFileInfo.fileName + ".enc", inputFileInfo.fileName + ".json.zip");
-                        ArchiveManager.unzip(inputFileInfo.fileName + ".json.zip", "/Users/anton/IdeaProjects/TextCalculator");
+                        ArchivationManager.unzip(inputFileInfo.fileName + ".json.zip", "/Users/anton/IdeaProjects/TextCalculator");
                         data = textFile.readData(inputFileInfo.fileName);
                         calculatedData = ((JsonManager) textFile).processedData(data);
                     }
                     case "encrypted, then archived" -> {
                         textFile = new JsonManager();
-                        ArchiveManager.unzip(inputFileInfo.fileName + ".enc.zip", "/Users/anton/IdeaProjects/TextCalculator");
+                        ArchivationManager.unzip(inputFileInfo.fileName + ".enc.zip", "/Users/anton/IdeaProjects/TextCalculator");
                         EncryptionManager.decryptFile(inputFileInfo.fileName + ".enc", inputFileInfo.fileName + ".json");
                         data = textFile.readData(inputFileInfo.fileName);
                         calculatedData = ((JsonManager) textFile).processedData(data);
@@ -95,7 +99,7 @@ public class SwitchManager {
                     }
                     case "archived" -> {
                         textFile = new XmlManager();
-                        ArchiveManager.unzip(inputFileInfo.fileName + ".xml.zip", "/Users/anton/IdeaProjects/TextCalculator");
+                        ArchivationManager.unzip(inputFileInfo.fileName + ".xml.zip", "/Users/anton/IdeaProjects/TextCalculator");
                         data = textFile.readData(inputFileInfo.fileName);
                         calculatedData = ((XmlManager) textFile).processedData(data);
                     }
@@ -108,13 +112,13 @@ public class SwitchManager {
                     case "archived, then encrypted" -> {
                         textFile = new XmlManager();
                         EncryptionManager.decryptFile(inputFileInfo.fileName + ".enc", inputFileInfo.fileName + ".xml.zip");
-                        ArchiveManager.unzip(inputFileInfo.fileName + ".xml.zip", "/Users/anton/IdeaProjects/TextCalculator");
+                        ArchivationManager.unzip(inputFileInfo.fileName + ".xml.zip", "/Users/anton/IdeaProjects/TextCalculator");
                         data = textFile.readData(inputFileInfo.fileName);
                         calculatedData = ((XmlManager) textFile).processedData(data);
                     }
                     case "encrypted, then archived" -> {
                         textFile = new XmlManager();
-                        ArchiveManager.unzip(inputFileInfo.fileName + ".enc.zip", "/Users/anton/IdeaProjects/TextCalculator");
+                        ArchivationManager.unzip(inputFileInfo.fileName + ".enc.zip", "/Users/anton/IdeaProjects/TextCalculator");
                         EncryptionManager.decryptFile(inputFileInfo.fileName + ".enc", inputFileInfo.fileName + ".xml");
                         data = textFile.readData(inputFileInfo.fileName);
                         calculatedData = ((XmlManager) textFile).processedData(data);
@@ -187,9 +191,9 @@ public class SwitchManager {
         switch (outputFileInfo.fileType) {
             case "archived" -> {
                 if (outputFileInfo.fileExtencion.equals("plain text"))
-                    ArchiveManager.archiveFile(outputFileInfo.fileName + ".txt");
+                    ArchivationManager.archiveFile(outputFileInfo.fileName + ".txt");
                 else
-                    ArchiveManager.archiveFile(outputFileInfo.fileName + "." + outputFileInfo.fileExtencion);
+                    ArchivationManager.archiveFile(outputFileInfo.fileName + "." + outputFileInfo.fileExtencion);
             }
             case "encrypted" -> {
                 if (outputFileInfo.fileExtencion.equals("plain text"))
@@ -199,10 +203,10 @@ public class SwitchManager {
             }
             case "archived, then encrypted" -> {
                 if (outputFileInfo.fileExtencion.equals("plain text")) {
-                    ArchiveManager.archiveFile(outputFileInfo.fileName + ".txt");
+                    ArchivationManager.archiveFile(outputFileInfo.fileName + ".txt");
                     EncryptionManager.encryptFile(outputFileInfo.fileName + ".txt.zip", outputFileInfo.fileName + ".enc");
                 } else {
-                    ArchiveManager.archiveFile(outputFileInfo.fileName + "." + outputFileInfo.fileExtencion);
+                    ArchivationManager.archiveFile(outputFileInfo.fileName + "." + outputFileInfo.fileExtencion);
                     EncryptionManager.encryptFile(outputFileInfo.fileName + "." + outputFileInfo.fileExtencion + ".zip", outputFileInfo.fileName + ".enc");
                 }
             }
@@ -211,7 +215,7 @@ public class SwitchManager {
                     EncryptionManager.encryptFile(outputFileInfo.fileName + ".txt", outputFileInfo.fileName + ".enc");
                 else
                     EncryptionManager.encryptFile(outputFileInfo.fileName + "." + outputFileInfo.fileExtencion, outputFileInfo.fileExtencion + ".enc");
-                ArchiveManager.archiveFile(outputFileInfo.fileName + ".enc");
+                ArchivationManager.archiveFile(outputFileInfo.fileName + ".enc");
             }
         }
 

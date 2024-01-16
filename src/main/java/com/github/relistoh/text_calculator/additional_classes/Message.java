@@ -1,4 +1,4 @@
-package com.github.relistoh.text_calculator;
+package com.github.relistoh.text_calculator.additional_classes;
 
 public class Message {
     public String senderName;

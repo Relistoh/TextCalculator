@@ -1,13 +1,15 @@
-package com.github.relistoh.text_calculator;
+package com.github.relistoh.text_calculator.archivation_encryption;
+
+import com.github.relistoh.text_calculator.reader_writer.TextFile;
 
 import java.io.*;
 import java.util.zip.*;
 
-public class ArchiveManager implements TextFile {
+public class ArchivationManager implements TextFile {
 
-    private TextFile archFile;
+    private final TextFile archFile;
 
-    public ArchiveManager(TextFile text) {
+    public ArchivationManager(TextFile text) {
         this.archFile = text;
     }
 

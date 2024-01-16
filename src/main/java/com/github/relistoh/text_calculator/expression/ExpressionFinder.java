@@ -1,4 +1,4 @@
-package com.github.relistoh.text_calculator;
+package com.github.relistoh.text_calculator.expression;
 
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -6,13 +6,14 @@ import java.util.Stack;
 
 public class ExpressionFinder {
     public static String evaluateMathExpressions(String input) {
-        Pattern pattern = Pattern.compile("[0-9\\\\(][0-9+\\-*/ \\\\(]+[0-9\\\\)]");
+        Pattern pattern = Pattern.compile("[0-9\\\\(][0-9+\\-*/ \\\\(\\\\)]+[0-9\\\\)]");
         Matcher matcher = pattern.matcher(input);
 
-        StringBuffer resultBuffer = new StringBuffer();
+        StringBuilder resultBuffer = new StringBuilder();
 
         while (matcher.find()) {
             String expression = matcher.group();
+            //System.out.println(expression);
             if (isValidExpression(expression)) {
                 //System.out.println(expression);
                 double result = ExpressionCalculator.evaluateExpression(expression);

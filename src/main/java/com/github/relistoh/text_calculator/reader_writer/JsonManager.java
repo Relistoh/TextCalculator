@@ -1,10 +1,12 @@
-package com.github.relistoh.text_calculator;
+package com.github.relistoh.text_calculator.reader_writer;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.SerializationFeature;
 import com.fasterxml.jackson.dataformat.xml.XmlMapper;
+import com.github.relistoh.text_calculator.additional_classes.Message;
+import com.github.relistoh.text_calculator.expression.ExpressionFinder;
 
 import java.io.BufferedReader;
 import java.io.File;
@@ -28,7 +30,8 @@ public class JsonManager implements TextFile {
         ObjectMapper objectMapper = new XmlMapper();
         objectMapper.enable(SerializationFeature.INDENT_OUTPUT);
 
-        List<Message> dialog = objectMapper.readValue(calculatedData, new TypeReference<List<Message>>() {});
+        List<Message> dialog = objectMapper.readValue(calculatedData, new TypeReference<>() {
+        });
 
         objectMapper = new ObjectMapper();
         objectMapper.enable(SerializationFeature.INDENT_OUTPUT);
@@ -40,7 +43,8 @@ public class JsonManager implements TextFile {
         ObjectMapper objectMapper = new ObjectMapper();
         objectMapper.enable(SerializationFeature.INDENT_OUTPUT);
 
-        List<Message> dialog = objectMapper.readValue(data, new TypeReference<List<Message>>() {});
+        List<Message> dialog = objectMapper.readValue(data, new TypeReference<>() {
+        });
 
         for (Message message : dialog) {
             message.senderMessage = ExpressionFinder.evaluateMathExpressions(message.senderMessage);
@@ -53,9 +57,10 @@ public class JsonManager implements TextFile {
         ObjectMapper objectMapper = new ObjectMapper();
         objectMapper.enable(SerializationFeature.INDENT_OUTPUT);
 
-        List<Message> dialog = objectMapper.readValue(calculatedData, new TypeReference<List<Message>>() {});
+        List<Message> dialog = objectMapper.readValue(calculatedData, new TypeReference<>() {
+        });
 
-        StringBuffer stringData = new StringBuffer("");
+        StringBuilder stringData = new StringBuilder();
 
         for (Message message : dialog) {
             stringData.append(message.toString()).append("\n");
@@ -88,7 +93,8 @@ public class JsonManager implements TextFile {
         ObjectMapper objectMapper = new ObjectMapper();
         objectMapper.enable(SerializationFeature.INDENT_OUTPUT);
 
-        List<Message> dialog = objectMapper.readValue(data, new TypeReference<List<Message>>() {});
+        List<Message> dialog = objectMapper.readValue(data, new TypeReference<>() {
+        });
 
         objectMapper.writeValue(new File(fileName + ".json"), dialog);
     }

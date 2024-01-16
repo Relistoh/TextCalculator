@@ -1,12 +1,12 @@
-package com.github.relistoh.text_calculator;
+package com.github.relistoh.text_calculator.ui;
 
-import javafx.beans.Observable;
+import com.github.relistoh.text_calculator.additional_classes.InputFileInfo;
+import com.github.relistoh.text_calculator.additional_classes.OutputFileInfo;
+import com.github.relistoh.text_calculator.SwitchManager;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
-
-import java.io.IOException;
 
 public class UIController {
     InputFileInfo inputFileInfo = new InputFileInfo();
@@ -15,9 +15,6 @@ public class UIController {
 
     @FXML
     private ChoiceBox<String> choiceBoxInput1, choiceBoxInput2, choiceBoxOutput1, choiceBoxOutput2;
-
-    @FXML
-    private Button showOutput;
 
     @FXML
     private TextField textFieldInput, textFieldOutput;

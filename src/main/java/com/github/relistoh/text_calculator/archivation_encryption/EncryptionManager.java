@@ -1,4 +1,6 @@
-package com.github.relistoh.text_calculator;
+package com.github.relistoh.text_calculator.archivation_encryption;
+
+import com.github.relistoh.text_calculator.reader_writer.TextFile;
 
 import javax.crypto.Cipher;
 import javax.crypto.CipherOutputStream;
@@ -8,7 +10,7 @@ import java.io.FileInputStream;
 import java.io.FileOutputStream;
 
 
-public class EncryptionManager implements TextFile{
+public class EncryptionManager implements TextFile {
 
     private static final String ALGORITHM = "AES";
     private static final byte[] STATIC_KEY_BYTES = "1234567890123456".getBytes();

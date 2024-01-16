@@ -1,9 +1,6 @@
-package com.github.relistoh.text_calculator;
+package com.github.relistoh.text_calculator.expression;
 
 import java.util.Stack;
-import java.util.StringTokenizer;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
 
 public class ExpressionCalculator {
 
@@ -16,7 +13,7 @@ public class ExpressionCalculator {
             if (Character.isDigit(c)) {
                 currentNumber.append(c);
             } else if (isOperator(c)) {
-                if (currentNumber.length() > 0) {
+                if (!currentNumber.isEmpty()) {
                     numbers.push(Double.parseDouble(currentNumber.toString()));
                     currentNumber.setLength(0);
                 }
@@ -27,7 +24,7 @@ public class ExpressionCalculator {
             } else if (c == '(') {
                 operators.push(c);
             } else if (c == ')') {
-                if (currentNumber.length() > 0) {
+                if (!currentNumber.isEmpty()) {
                     numbers.push(Double.parseDouble(currentNumber.toString()));
                     currentNumber.setLength(0);
                 }
@@ -38,7 +35,7 @@ public class ExpressionCalculator {
             }
         }
 
-        if (currentNumber.length() > 0) {
+        if (!currentNumber.isEmpty()) {
             numbers.push(Double.parseDouble(currentNumber.toString()));
         }
 
@@ -54,22 +51,16 @@ public class ExpressionCalculator {
         double operand1 = numbers.pop();
 
         switch (operator) {
-            case '+':
-                numbers.push(operand1 + operand2);
-                break;
-            case '-':
-                numbers.push(operand1 - operand2);
-                break;
-            case '*':
-                numbers.push(operand1 * operand2);
-                break;
-            case '/':
+            case '+' -> numbers.push(operand1 + operand2);
+            case '-' -> numbers.push(operand1 - operand2);
+            case '*' -> numbers.push(operand1 * operand2);
+            case '/' -> {
                 if (operand2 != 0) {
                     numbers.push(operand1 / operand2);
                 } else {
                     System.out.println("Деление на ноль!");
                 }
-                break;
+            }
         }
     }
 

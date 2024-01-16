@@ -3,7 +3,7 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<Pane prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.github.relistoh.text_calculator.UIController">
+<Pane prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.github.relistoh.text_calculator.ui.UIController">
    <ChoiceBox fx:id="choiceBoxInput1" layoutX="50.0" layoutY="145.0" prefHeight="26.0" prefWidth="300.0" />
    <ChoiceBox fx:id="choiceBoxInput2" layoutX="50.0" layoutY="225.0" prefHeight="26.0" prefWidth="300.0" />
    <ChoiceBox fx:id="choiceBoxOutput1" layoutX="450.0" layoutY="145.0" prefHeight="26.0" prefWidth="300.0" />

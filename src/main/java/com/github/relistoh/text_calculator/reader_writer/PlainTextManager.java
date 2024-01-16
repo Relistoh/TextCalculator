@@ -1,9 +1,8 @@
-package com.github.relistoh.text_calculator;
+package com.github.relistoh.text_calculator.reader_writer;
 
 import java.io.*;
-import java.util.Scanner;
 
-public class PlainTextManager implements TextFile{
+public class PlainTextManager implements TextFile {
 
     @Override
     public String readData(String fileName) {

@@ -1,4 +1,4 @@
-package com.github.relistoh.text_calculator;
+package com.github.relistoh.text_calculator.reader_writer;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 
