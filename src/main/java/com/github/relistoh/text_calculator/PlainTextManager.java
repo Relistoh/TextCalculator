@@ -1,8 +1,6 @@
 package com.github.relistoh.text_calculator;
 
-import java.io.BufferedReader;
-import java.io.FileReader;
-import java.io.IOException;
+import java.io.*;
 import java.util.Scanner;
 
 public class PlainTextManager implements TextFile{
@@ -25,6 +23,10 @@ public class PlainTextManager implements TextFile{
 
     @Override
     public void writeData(String data, String fileName) {
-
+        try (BufferedWriter writer = new BufferedWriter(new FileWriter(fileName + ".txt"))) {
+            writer.write(data);
+        } catch (IOException e) {
+            System.err.println("Error writing to file: " + e.getMessage());
+        }
     }
 }

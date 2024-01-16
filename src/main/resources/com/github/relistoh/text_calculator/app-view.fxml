@@ -8,15 +8,15 @@
    <ChoiceBox fx:id="choiceBoxInput2" layoutX="50.0" layoutY="225.0" prefHeight="26.0" prefWidth="300.0" />
    <ChoiceBox fx:id="choiceBoxOutput1" layoutX="450.0" layoutY="145.0" prefHeight="26.0" prefWidth="300.0" />
    <ChoiceBox fx:id="choiceBoxOutput2" layoutX="450.0" layoutY="225.0" prefHeight="26.0" prefWidth="300.0" />
-   <TextArea fx:id="textAreaInput" layoutX="50.0" layoutY="320.0" prefHeight="200.0" prefWidth="300.0" />
-   <TextArea fx:id="textAreaOutput" layoutX="450.0" layoutY="320.0" prefHeight="200.0" prefWidth="300.0" />
+   <TextArea fx:id="textAreaInput" editable="false" layoutX="50.0" layoutY="320.0" prefHeight="200.0" prefWidth="300.0" />
+   <TextArea fx:id="textAreaOutput" editable="false" layoutX="450.0" layoutY="320.0" prefHeight="200.0" prefWidth="300.0" />
    <Button fx:id="showOutput" layoutX="50.0" layoutY="540.0" mnemonicParsing="false" onAction="#showOutputAction" prefHeight="26.0" prefWidth="300.0" text="Show output preview" />
-   <Button layoutX="450.0" layoutY="540.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="300.0" text="Save output to file" />
+   <Button fx:id="saveOutput" layoutX="450.0" layoutY="540.0" mnemonicParsing="false" onAction="#saveOutputAction" prefHeight="26.0" prefWidth="300.0" text="Save output to file" />
    <Label layoutX="50.0" layoutY="38.0" prefHeight="17.0" prefWidth="300.0" text="Enter input file name:" />
    <TextField fx:id="textFieldInput" layoutX="50.0" layoutY="64.0" prefHeight="26.0" prefWidth="300.0" promptText="Enter text here" />
    <Label layoutX="50.0" layoutY="119.0" prefHeight="17.0" prefWidth="300.0" text="Choose file type:" />
    <Label layoutX="50.0" layoutY="196.0" prefHeight="17.0" prefWidth="300.0" text="Choose if file is encrypted or archived:" />
-   <TextField layoutX="450.0" layoutY="64.0" prefHeight="26.0" prefWidth="300.0" promptText="Enter text here" />
+   <TextField fx:id="textFieldOutput" layoutX="450.0" layoutY="64.0" prefHeight="26.0" prefWidth="300.0" promptText="Enter text here" />
    <Label layoutX="450.0" layoutY="38.0" prefHeight="17.0" prefWidth="300.0" text="Enter output file name:" />
    <Label layoutX="450.0" layoutY="119.0" prefHeight="17.0" prefWidth="300.0" text="Choose file type:" />
    <Label layoutX="450.0" layoutY="196.0" prefHeight="17.0" prefWidth="300.0" text="Choose if file is encrypted or archived:" />

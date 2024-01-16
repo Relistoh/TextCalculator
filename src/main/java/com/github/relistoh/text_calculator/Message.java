@@ -14,10 +14,7 @@ public class Message {
 
     @Override
     public String toString() {
-        return "Message{" +
-                "senderName='" + senderName + '\'' +
-                ", senderMessage='" + senderMessage + '\'' +
-                '}';
+        return senderName + ": " + senderMessage;
     }
 
     public String getSenderName() {

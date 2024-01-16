@@ -10,25 +10,17 @@ import java.io.IOException;
 
 public class UIController {
     InputFileInfo inputFileInfo = new InputFileInfo();
+    OutputFileInfo outputFileInfo = new OutputFileInfo();
     SwitchManager switchManager = new SwitchManager();
 
     @FXML
-    private ChoiceBox<String> choiceBoxInput1;
-
-    @FXML
-    private ChoiceBox<String> choiceBoxInput2;
-
-    @FXML
-    private ChoiceBox<String> choiceBoxOutput1;
-
-    @FXML
-    private ChoiceBox<String> choiceBoxOutput2;
+    private ChoiceBox<String> choiceBoxInput1, choiceBoxInput2, choiceBoxOutput1, choiceBoxOutput2;
 
     @FXML
     private Button showOutput;
 
     @FXML
-    private TextField textFieldInput;
+    private TextField textFieldInput, textFieldOutput;
 
     @FXML
     private TextArea textAreaInput, textAreaOutput;
@@ -45,7 +37,7 @@ public class UIController {
     }
 
     @FXML
-    public void showOutputAction() throws IOException {
+    public void showOutputAction() throws Exception {
         inputFileInfo.fileName = textFieldInput.getText();
         inputFileInfo.fileExtencion = choiceBoxInput1.getValue();
         inputFileInfo.fileType = choiceBoxInput2.getValue();
@@ -56,5 +48,14 @@ public class UIController {
 
 
         System.out.println(inputFileInfo.toString());
+    }
+
+    @FXML
+    public void saveOutputAction() throws IOException {
+        outputFileInfo.fileName = textFieldOutput.getText();
+        outputFileInfo.fileExtencion = choiceBoxOutput1.getValue();
+        outputFileInfo.fileType = choiceBoxOutput2.getValue();
+
+        switchManager.outputSwitch(outputFileInfo, inputFileInfo);
     }
 }

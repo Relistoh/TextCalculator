@@ -6,7 +6,7 @@ import java.util.Stack;
 
 public class ExpressionFinder {
     public static String evaluateMathExpressions(String input) {
-        Pattern pattern = Pattern.compile("[0-9\\\\(][0-9+\\-*/\\s\\\\(\\\\)]+[0-9\\\\)]");
+        Pattern pattern = Pattern.compile("[0-9\\\\(][0-9+\\-*/ \\\\(]+[0-9\\\\)]");
         Matcher matcher = pattern.matcher(input);
 
         StringBuffer resultBuffer = new StringBuffer();
@@ -14,8 +14,9 @@ public class ExpressionFinder {
         while (matcher.find()) {
             String expression = matcher.group();
             if (isValidExpression(expression)) {
-                System.out.println(expression);
+                //System.out.println(expression);
                 double result = ExpressionCalculator.evaluateExpression(expression);
+                //System.out.println(result);
                 matcher.appendReplacement(resultBuffer, String.valueOf(result));
             } else {
                 System.out.println("Error: Invalid expression - " + expression);
