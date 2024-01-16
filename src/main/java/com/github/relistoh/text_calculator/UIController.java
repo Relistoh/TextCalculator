@@ -51,7 +51,7 @@ public class UIController {
     }
 
     @FXML
-    public void saveOutputAction() throws IOException {
+    public void saveOutputAction() throws Exception {
         outputFileInfo.fileName = textFieldOutput.getText();
         outputFileInfo.fileExtencion = choiceBoxOutput1.getValue();
         outputFileInfo.fileType = choiceBoxOutput2.getValue();
